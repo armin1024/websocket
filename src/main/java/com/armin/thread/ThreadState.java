@@ -1,5 +1,8 @@
 package com.armin.thread;
 
+/**
+ * Java线程的6种状态
+ */
 public class ThreadState {
 
     public static void main(String[] args) throws Exception {

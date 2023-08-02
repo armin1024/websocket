@@ -4,6 +4,9 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
 
+/**
+ * 线程的多种创建方式
+ */
 public class ThreadTest {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {

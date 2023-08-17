@@ -1,4 +1,4 @@
-package com.armin.thread.lock;
+package com.armin.thread.lock.sync;
 
 import org.openjdk.jol.info.ClassLayout;
 

@@ -1,4 +1,4 @@
-package com.armin.thread.lock;
+package com.armin.thread.lock.reentrant;
 
 import java.util.concurrent.locks.ReentrantLock;
 

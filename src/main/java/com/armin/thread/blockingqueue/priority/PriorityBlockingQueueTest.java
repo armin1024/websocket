@@ -1,4 +1,4 @@
-package com.armin.thread.blockingqueue;
+package com.armin.thread.blockingqueue.priority;
 
 import java.util.concurrent.PriorityBlockingQueue;
 

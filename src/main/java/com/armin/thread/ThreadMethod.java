@@ -159,6 +159,7 @@ public class ThreadMethod {
      * - 等待池：WAITING
      * - 锁池：BLOCKED
      * 在调用wait()和notify()以及notifyAll()时，必须在synchronized修饰的代码快或者方法内部才可以，因为要操作基于某个对象的锁的信息维护
+     * 并且必须使用锁对象来调用该方法，如下：锁为ThreadMethod.class，所以必须用ThreadMethod.class调用wait()或notify()
      */
     public static void executeWaitAndNotify() throws InterruptedException {
         Thread t1 = new Thread(ThreadMethod::sync, "t1");

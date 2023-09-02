@@ -43,7 +43,7 @@ public class NewWorkStealingPool {
     private static class SumRecursiveTask extends RecursiveTask<Integer> {
         /** 指定一个线程处理哪个位置的数据 */
         private int start,end;
-        private final int MAX_STRIDE = 200_000_000;
+        private final int MAX_STRIDE = 300_000_000;
         //  200_000_000： 147964900
         //  100_000_000： 145942100
 

@@ -17,13 +17,15 @@ public class CountDownLatchTest {
         executor.execute(CountDownLatchTest::a);
         executor.execute(CountDownLatchTest::b);
         executor.execute(CountDownLatchTest::c);
+        // 关闭线程池，让主线程执行完毕后退出
+        executor.shutdown();
         System.out.println("三个任务并行执行,主业务线程等待");
         // 死等任务结束
-        // countDownLatch.await();
+        countDownLatch.await();
         // 如果在规定时间内，任务没有结束，返回false
         if (countDownLatch.await(5, TimeUnit.SECONDS)) {
             System.out.println("三个任务处理完毕，主业务线程继续执行");
-        }else{
+        } else {
             System.out.println("三个任务没有全部处理完毕，执行其他的操作");
         }
     }

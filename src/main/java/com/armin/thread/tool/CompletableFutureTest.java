@@ -22,7 +22,43 @@ public class CompletableFutureTest {
 //        testWhenComplete();
 //        testHandle();
 //        testAllOf();
-        testAnyOf();
+//        testAnyOf();
+        testRunSyncExecuteWay();
+    }
+
+    /**
+     * 任务编排的存储&执行方式
+     * 首先如果要在前继任务处理后，执行后置任务的话
+     *
+     * 有两种情况：
+     *
+     * * 前继任务如果没有执行完毕，后置任务需要先放在`stack`栈结构中存储
+     * * 前继任务已经执行完毕了，后置任务就应该直接执行，不需要在往stack中存储了
+     *
+     * 如果单独采用`thenRun`在一个任务后面指定多个后继任务，`CompletableFuture`无法保证具体的执行顺序，而影响执行顺序的是前继任务的执行时间，以及后置任务编排的时机
+     */
+    private static void testRunSyncExecuteWay() {
+        CompletableFuture<Void> taskA = CompletableFuture.runAsync(() -> {
+            System.out.println("任务A " + Thread.currentThread().getName());
+//            try {
+//                Thread.sleep(1);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+        });
+        taskA.thenRun(() -> {
+            System.out.println("任务B " + Thread.currentThread().getName());
+        });
+        taskA.thenRun(() -> {
+            System.out.println("任务C " + Thread.currentThread().getName());
+        });
+        taskA.thenRun(() -> {
+            System.out.println("任务D " + Thread.currentThread().getName());
+        });
+        taskA.thenRun(() -> {
+            System.out.println("任务E " + Thread.currentThread().getName());
+        });
+        taskA.join();
     }
 
     private static void testAnyOf() {
